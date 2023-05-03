@@ -1,7 +1,5 @@
 package task2;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,13 +8,12 @@ public class Main {
         MyClas<Integer> intList = new MyClas<>();
         String st;
         Scanner in = new Scanner(System.in);
-        while (true){
+        do {
             st = in.nextLine();
             list.add(st);
             intList.add(4);
-            if (st.equals("end")) break;
 
-        }
+        } while (!st.equals("end"));
         System.out.println(list.length());
         System.out.println(list.indeksator(0));
         for (int i = 0; i < list.length(); i++){
