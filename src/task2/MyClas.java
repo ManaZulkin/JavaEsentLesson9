@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class MyClas <T> implements MyListInerface {
+public class MyClas <T> implements MyListInerface <T> {
 
 
-    private static final int DEFULT_CUPUCITY = 3;
+    private static final int DEFULT_CUPUCITY = 5;
     private final Object[] EMPTY_ELEMENT_DATA = new Object[DEFULT_CUPUCITY];
     private Object[] myClas;
     private T[] tArray;
@@ -27,13 +27,10 @@ public class MyClas <T> implements MyListInerface {
     }
 
     private void reSize(T[] tArray){
-        Object[] transit = new Object[tArray.length];
-        T[] tTransit = (T[]) transit;
-        tTransit = tArray;
-        this.tArray = (T[]) (new Object[(int) (this.size * 1.5)]);
-        for (int i = 0; i <= tTransit.length; i++){
-            this.tArray[i] = tTransit[i];
-        }
+       int newSize = (int)(this.size * 1.5);
+       size = newSize;
+       this.tArray = (T[])(new Object[newSize]);
+       if (tArray.length + 1 >= 0) System.arraycopy(tArray, 0 , this.tArray, 0, tArray.length);
     }
     public MyClas(){
         this.myClas = EMPTY_ELEMENT_DATA;
@@ -55,18 +52,21 @@ public class MyClas <T> implements MyListInerface {
             else {
                 curentPos += 1;
                 this.tArray[curentPos] = (T) obj;
-                }
+            }
+            if (curentPos >= ((int) (size * 75 / 100))) {
+                reSize(this.tArray);
+            }
+
         }
 
         @Override
         public final int length () {
-        length = 0;
-            for (T obj: this.tArray )
-            {
-                if(obj != null) length += 1;
+            int length = 0;
+            for (T obj : this.tArray) {
+                if (obj != null) length += 1;
                 else break;
             }
-        return length;
+            return length;
     }
 
         @Override
