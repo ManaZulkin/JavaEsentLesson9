@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MyClass {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String tipe = "";
+        String tipe;
         System.out.println("Enter name of object which you want to create(string, int and boolean in program right now)" +
                 "\n'End' will stop this program");
         do {
